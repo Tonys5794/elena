@@ -309,6 +309,21 @@ footer a{color:#fff}
 .sticky .btn{flex:1;text-align:center;padding:14px 10px;box-shadow:none}
 .sticky .btn-line{background:transparent;color:var(--wine)}
 @media(max-width:760px){.sticky{display:flex}body{padding-bottom:76px}}
+
+/* пальцем в телефон: контакты в подвале и бургер должны быть не меньше 44px.
+   Высоту добираем внутренним отступом, поэтому на глаз ничего не съезжает */
+.cts a{padding:9px 0;margin-bottom:0}
+.cts a.btn{padding:15px 30px;margin-top:12px}
+.burger{padding:10px 6px;margin-right:-6px;line-height:1}
+
+/* если у человека в системе выключены анимации — ничего не двигаем и не крутим */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .strip-track{animation:none}
+  .rev{opacity:1;transform:none;transition:none}
+  .btn:hover,.why article:hover{transform:none}
+  .gal img,.ba .before,.gal figure:hover img{transition:none}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -345,6 +360,14 @@ footer a{color:#fff}
   }
 }
 </script>
+<noscript><style>
+/* без JS блоки не «появятся» и вкладки прайса не переключатся —
+   показываем всё разом и убираем кнопки, которые всё равно не работают */
+.rev{opacity:1;transform:none}
+.plist{display:grid}
+.tabs{display:none}
+@media(max-width:940px){.burger{display:none}}
+</style></noscript>
 </head>
 <body>
 
@@ -363,7 +386,7 @@ footer a{color:#fff}
       <a href="#revs" onclick="closeMenu()">Отзывы</a>
       <a href="#contacts" onclick="closeMenu()">Контакты</a>
     </nav>
-    <button class="burger" onclick="toggleMenu()" aria-label="Меню">☰</button>
+    <button class="burger" onclick="toggleMenu()" aria-label="Меню" aria-expanded="false" aria-controls="menu">☰</button>
     <a class="btn hbtn" href="https://vk.com/service-booking-232800525" target="_blank" rel="noopener">Записаться</a>
   </div>
 </header>
@@ -474,13 +497,13 @@ footer a{color:#fff}
       <h2>Цены <em>студии</em></h2>
     </div>
 
-    <div class="tabs rev">
-      <button class="tab on" data-t="dep">Депиляция &middot; 19</button>
-      <button class="tab" data-t="man">Маникюр &middot; 8</button>
-      <button class="tab" data-t="ped">Педикюр &middot; 6</button>
+    <div class="tabs rev" role="tablist" aria-label="Категории услуг">
+      <button class="tab on" data-t="dep" id="tab-dep" role="tab" aria-selected="true" aria-controls="dep">Депиляция &middot; 19</button>
+      <button class="tab" data-t="man" id="tab-man" role="tab" aria-selected="false" aria-controls="man">Маникюр &middot; 8</button>
+      <button class="tab" data-t="ped" id="tab-ped" role="tab" aria-selected="false" aria-controls="ped">Педикюр &middot; 6</button>
     </div>
 
-    <div class="plist on rev" id="dep">
+    <div class="plist on rev" id="dep" role="tabpanel" aria-labelledby="tab-dep">
       <div class="row"><span class="nm">Глубокое бикини, сахар / воск</span><span class="pr">1 200 ₽</span></div>
       <div class="row"><span class="nm">Ноги полностью, сахар / воск</span><span class="pr">1 300 ₽</span></div>
       <div class="row"><span class="nm">Бикини классика, сахар / воск</span><span class="pr">800 ₽</span></div>
@@ -498,7 +521,7 @@ footer a{color:#fff}
       <div class="row"><span class="nm">Полоска на животе, сахар / воск</span><span class="pr">150 ₽</span></div>
     </div>
 
-    <div class="plist rev" id="man">
+    <div class="plist rev" id="man" role="tabpanel" aria-labelledby="tab-man">
       <div class="row"><span class="nm">Наращивание ногтей</span><span class="pr">2 200 ₽</span></div>
       <div class="row"><span class="nm">Укрепление гелем с дизайном френч</span><span class="pr">2 000 ₽</span></div>
       <div class="row"><span class="nm">Укрепление ногтей гелем</span><span class="pr">1 800 ₽</span></div>
@@ -509,7 +532,7 @@ footer a{color:#fff}
       <div class="row"><span class="nm">Ремонт одного ногтя</span><span class="pr">100 ₽</span></div>
     </div>
 
-    <div class="plist rev" id="ped">
+    <div class="plist rev" id="ped" role="tabpanel" aria-labelledby="tab-ped">
       <div class="row"><span class="nm">Мужской педикюр</span><span class="pr">2 100 ₽</span></div>
       <div class="row"><span class="nm">Педикюр полный с покрытием гель-лак</span><span class="pr">2 100 ₽</span></div>
       <div class="row"><span class="nm">Комбинированный педикюр женский</span><span class="pr">1 900 ₽</span></div>
@@ -715,15 +738,21 @@ footer a{color:#fff}
 </div>
 
 <script>
-function toggleMenu(){ document.getElementById('menu').classList.toggle('open'); }
-function closeMenu(){ document.getElementById('menu').classList.remove('open'); }
+function toggleMenu(){
+  var open = document.getElementById('menu').classList.toggle('open');
+  document.querySelector('.burger').setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+function closeMenu(){
+  document.getElementById('menu').classList.remove('open');
+  document.querySelector('.burger').setAttribute('aria-expanded','false');
+}
 
 /* вкладки прайса */
 document.querySelectorAll('.tab').forEach(function (t) {
   t.addEventListener('click', function () {
-    document.querySelectorAll('.tab').forEach(function (x) { x.classList.remove('on'); });
+    document.querySelectorAll('.tab').forEach(function (x) { x.classList.remove('on'); x.setAttribute('aria-selected','false'); });
     document.querySelectorAll('.plist').forEach(function (x) { x.classList.remove('on'); });
-    t.classList.add('on');
+    t.classList.add('on'); t.setAttribute('aria-selected','true');
     var el = document.getElementById(t.dataset.t);
     el.classList.add('on'); el.classList.add('in');
   });
@@ -753,6 +782,7 @@ document.querySelectorAll('.tab').forEach(function (t) {
   box.addEventListener('pointerup',   function () { dragging = false; });
   box.addEventListener('pointercancel', function () { dragging = false; });
   // лёгкая подсказка, что это можно двигать
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var shown = false;
   var io2 = new IntersectionObserver(function (es) {
     es.forEach(function (e) {

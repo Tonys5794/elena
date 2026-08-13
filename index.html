@@ -160,6 +160,11 @@ header .hbtn{padding:10px 20px;font-size:14px}
 .form input:focus,.form textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:transparent}
 .form .btn{width:100%;margin-top:20px}
 .note{font-size:12.5px;color:var(--muted);margin-top:12px;text-align:center;font-weight:300}
+
+/* кнопки связи в карточке обучения: в столбик, на всю ширину — с телефона
+   в них попадаешь пальцем, а не целишься */
+.acts{display:grid;gap:10px;margin-top:4px}
+.acts .btn{width:100%;text-align:center;padding:16px 22px}
 .ok{display:none;background:#eef7f1;border:1px solid #c5e3d2;color:#2c6647;
     padding:16px;border-radius:12px;font-size:14.5px}
 
@@ -259,6 +264,26 @@ footer a{color:#fff}
 .cts a:hover{text-decoration:underline}
 .copy{border-top:1px solid rgba(255,255,255,.14);padding-top:22px;font-size:13px;opacity:.6;
       display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-weight:300}
+
+/* обязательная информация об исполнителе и оговорки: читаемо, но не кричит */
+.legal{border-top:1px solid rgba(255,255,255,.14);margin-top:26px;padding-top:20px;
+       font-size:13px;line-height:1.7;font-weight:300;opacity:.55;max-width:820px}
+.legal a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.legal a:hover{opacity:1}
+.pnote{margin-top:20px;font-size:13.5px;line-height:1.7;color:var(--muted);font-weight:300;
+       border-left:2px solid var(--gold);padding-left:16px;max-width:760px}
+.pnote b{font-weight:600;color:var(--ink)}
+
+/* противопоказания: свёрнуто, чтобы не пугать простынёй, но открыто одним кликом */
+.warn{margin-top:22px;max-width:760px;border:1px solid rgba(0,0,0,.1);border-radius:12px;
+      padding:0 18px;background:rgba(0,0,0,.015)}
+.warn summary{cursor:pointer;padding:15px 0;font-size:14.5px;font-weight:600;
+      letter-spacing:.01em;list-style:none}
+.warn summary::-webkit-details-marker{display:none}
+.warn summary::before{content:"+ ";color:var(--gold);font-weight:700}
+.warn[open] summary::before{content:"\2212 "}
+.warn p{font-size:13.5px;line-height:1.75;color:var(--muted);font-weight:300;margin:0 0 12px}
+.warn[open] summary{border-bottom:1px solid rgba(0,0,0,.08);margin-bottom:14px}
 
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:90;background:#fff;border-top:1px solid var(--line);
         padding:10px 14px;display:none;gap:10px;box-shadow:0 -8px 28px rgba(0,0,0,.09)}
@@ -372,19 +397,17 @@ footer a{color:#fff}
 
       <div class="card rev">
         <h3>Записаться на обучение</h3>
-        <p class="sub">Расскажу программу, сроки и стоимость под вашу задачу</p>
-        <form class="form" id="eduForm">
-          <label for="f-name">Как вас зовут</label>
-          <input id="f-name" name="name" required placeholder="Имя">
-          <label for="f-phone">Телефон или ник в Telegram</label>
-          <input id="f-phone" name="phone" required placeholder="+7 ...">
-          <label for="f-msg">Есть ли опыт в бьюти?</label>
-          <textarea id="f-msg" name="msg" rows="3" placeholder="Например: делаю маникюр, хочу добавить депиляцию"></textarea>
-          <button class="btn btn-gold" type="submit">Отправить заявку</button>
-          <p class="note">Отвечу в течение дня. Или напишите сразу во
-             <a href="https://vk.com/club232800525" target="_blank" rel="noopener">ВКонтакте</a>.</p>
-        </form>
-        <div class="ok" id="eduOk">Заявка отправлена. Свяжусь с вами в ближайшее время.</div>
+        <p class="sub">Напишите, что уже умеете и чего хотите — расскажу программу,
+          сроки и стоимость под вашу задачу</p>
+        <div class="acts">
+          <a class="btn btn-gold" href="https://vk.me/club232800525"
+             target="_blank" rel="noopener">Написать во ВКонтакте</a>
+          <a class="btn btn-line" href="https://t.me/+79247072551"
+             target="_blank" rel="noopener">Написать в Telegram</a>
+          <a class="btn btn-line" href="tel:+79247072551">Позвонить: +7 924 707-25-51</a>
+        </div>
+        <p class="note">Отвечаю в течение дня. Спрашивайте прямо — без опыта в бьюти
+          тоже берут, это нормальный вопрос.</p>
       </div>
     </div>
   </div>
@@ -441,7 +464,22 @@ footer a{color:#fff}
       <div class="row"><span class="nm">Педикюр, пальчики</span><span class="pr">1 000 ₽</span></div>
     </div>
 
-    <p class="upd">Цены действуют с 16 марта 2026 года. Не является публичной офертой.</p>
+    <p class="upd">Цены действуют с 16 марта 2026 года. Не является публичной офертой.
+      Итоговая стоимость зависит от объёма работы и обсуждается до начала процедуры.</p>
+
+    <details class="warn">
+      <summary>Противопоказания — прочитайте до записи</summary>
+      <p>Депиляция не проводится при повреждениях и воспалениях кожи в зоне обработки,
+        обострении герпеса, гнойничковых высыпаниях, а также в первые две недели после
+        загара, солярия и химических пилингов.</p>
+      <p>Требуют предварительного обсуждения: варикоз и тромбофлебит, сахарный диабет,
+        эпилепсия, склонность к аллергии, приём ретиноидов (например, изотретиноина),
+        беременность. Это не всегда отказ — но мастер должен знать заранее.</p>
+      <p>Маникюр и педикюр не выполняются при грибковых поражениях ногтей и кожи
+        и при открытых ранах.</p>
+      <p>Услуги не являются медицинскими, мастер не ставит диагнозов и не назначает
+        лечение. Если сомневаетесь, подходит ли вам процедура, — сначала к врачу.</p>
+    </details>
     <p style="margin-top:24px"><a class="btn" href="https://vk.com/service-booking-232800525" target="_blank" rel="noopener">Выбрать время и записаться</a></p>
   </div>
 </section>
@@ -596,6 +634,20 @@ footer a{color:#fff}
         <a class="btn btn-gold" style="margin-top:12px" href="https://vk.com/service-booking-232800525" target="_blank" rel="noopener">Записаться онлайн</a>
       </div>
     </div>
+    <div class="legal">
+      <p>Услуги оказывает <!-- ЗАМЕНИТЬ: самозанятая Иванова Елена Ивановна, ИНН 380000000000
+         · или · ИП Иванова Е. И., ИНН 380000000000, ОГРНИП 300000000000000 -->
+         <b>[статус, ФИО, ИНН — уточнить у Елены]</b>.
+         Адрес оказания услуг: г. Иркутск, 5-й Советский переулок, 1а.
+         Телефон: <a href="tel:+79247072551">+7 924 707-25-51</a>.</p>
+      <p>Цены на сайте информационные и не являются публичной офертой (ст. 437 ГК РФ).
+         Итоговая стоимость зависит от объёма работы и обсуждается до начала процедуры.
+         Актуальную цену уточняйте по телефону или во <a href="https://vk.com/club232800525"
+         target="_blank" rel="noopener">ВКонтакте</a>.</p>
+      <p>Услуги депиляции, маникюра и педикюра не являются медицинскими.
+         <a href="policy.html">Политика обработки персональных данных</a>.</p>
+    </div>
+
     <div class="copy">
       <span>Студия Елены &middot; депиляция, маникюр, педикюр, обучение &middot; Иркутск</span>
       <span>Демонстрационный пример</span>
@@ -680,14 +732,11 @@ document.querySelectorAll('.tab').forEach(function (t) {
   items.forEach(function (x) { io.observe(x); });
 })();
 
-/* Форма пока только показывает подтверждение.
-   ПРИ ПРОДАЖЕ: заменить тег на <form class="form" action="https://formspree.io/f/КОД" method="POST">
-   и убрать этот обработчик. */
-document.getElementById('eduForm').addEventListener('submit', function (e) {
-  e.preventDefault();
-  this.style.display = 'none';
-  document.getElementById('eduOk').style.display = 'block';
-});
+/* Формы на сайте нет намеренно: заявка в никуда хуже, чем сообщение в мессенджер,
+   где человек уже залогинен. Плюс сайт не собирает персональные данные — значит
+   не нужны ни политика согласия, ни уведомление в Роскомнадзор из-за сайта.
+   Если когда-нибудь понадобится настоящая форма — приёмщик заявок должен быть
+   на российском сервере, иначе это трансграничная передача данных. */
 </script>
 </body>
 </html>

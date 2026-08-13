@@ -5,6 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Елена — обучение депиляции и студия ногтевого сервиса в Иркутске</title>
 <meta name="description" content="Обучение депиляции сахаром и воском в Иркутске. Студия Елены: депиляция, маникюр, педикюр. Рейтинг 5,0 в 2ГИС по 30 оценкам. 5-й Советский переулок, 1а, Ново-Ленино.">
+<link rel="canonical" href="https://tonys5794.github.io/elena/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Студия Елены">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://tonys5794.github.io/elena/">
+<meta property="og:title" content="Студия Елены — обучение депиляции, маникюр и педикюр в Иркутске">
+<meta property="og:description" content="Обучение депиляции сахаром и воском с нуля. Депиляция, маникюр, педикюр в Ново-Ленино. Рейтинг 5,0 в 2ГИС, 29 отзывов. Запись онлайн.">
+<meta property="og:image" content="https://tonys5794.github.io/elena/photo/hero.jpg">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="1250">
+<meta property="og:image:alt" content="Работа мастера">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Студия Елены — обучение депиляции, маникюр и педикюр в Иркутске">
+<meta name="twitter:description" content="Обучение депиляции сахаром и воском с нуля. Депиляция, маникюр, педикюр в Ново-Ленино. Рейтинг 5,0 в 2ГИС.">
+<meta name="twitter:image" content="https://tonys5794.github.io/elena/photo/hero.jpg">
+<meta name="theme-color" content="#2e2a2b">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -32,6 +48,7 @@ a{color:inherit}
 h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.12;letter-spacing:-.01em}
 h1 em,h2 em{font-style:italic;color:var(--gold)}
 section{padding:clamp(56px,6.2vw,112px) 0}
+section,footer{scroll-margin-top:78px}
 
 /* ПРИ ПРОДАЖЕ: удалить блок .demo в разметке */
 .demo{background:#1b1819;color:#efe9e6;text-align:center;font-size:13px;padding:9px 16px;line-height:1.45;font-weight:300}
@@ -237,6 +254,8 @@ header .hbtn{padding:10px 20px;font-size:14px}
 .gal img{width:100%;height:100%;object-fit:cover;display:block}
 .gal figure:hover img{transform:scale(1.04)}
 .gal img{transition:.4s}
+.gal figcaption{display:none;font-size:13px;color:#a89f9b;font-weight:300}
+.gal figure.empty figcaption{display:block}
 
 /* ---------- отзывы ---------- */
 .revs{background:var(--bg2)}
@@ -291,6 +310,41 @@ footer a{color:#fff}
 .sticky .btn-line{background:transparent;color:var(--wine)}
 @media(max-width:760px){.sticky{display:flex}body{padding-bottom:76px}}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BeautySalon",
+  "@id": "https://tonys5794.github.io/elena/#business",
+  "name": "Студия Елены",
+  "description": "Обучение депиляции сахаром и воском, депиляция, маникюр и педикюр в Иркутске, микрорайон Ново-Ленино.",
+  "url": "https://tonys5794.github.io/elena/",
+  "telephone": "+79247072551",
+  "image": "https://tonys5794.github.io/elena/photo/hero.jpg",
+  "priceRange": "100–2200 ₽",
+  "currenciesAccepted": "RUB",
+  "paymentAccepted": "Наличные, перевод с карты",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "5-й Советский переулок, 1а",
+    "addressLocality": "Иркутск",
+    "addressRegion": "Иркутская область",
+    "postalCode": "664013",
+    "addressCountry": "RU"
+  },
+  "areaServed": "Иркутск",
+  "sameAs": [
+    "https://vk.com/club232800525",
+    "https://2gis.ru/irkutsk/firm/70000001104909063"
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "bestRating": "5",
+    "ratingCount": "30",
+    "reviewCount": "29"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -545,21 +599,21 @@ footer a{color:#fff}
          Чего нет, то покажет имя файла и не сломает сетку. -->
     <div class="gal rev">
       <figure><img src="photo/1.jpg" alt="Работа мастера" loading="lazy"
-        onerror="this.closest('figure').remove()"></figure>
+        onerror="this.style.display='none';this.closest('figure').classList.add('empty')"><figcaption>Фото скоро</figcaption></figure>
       <figure><img src="photo/2.jpg" alt="Работа мастера" loading="lazy"
-        onerror="this.closest('figure').remove()"></figure>
+        onerror="this.style.display='none';this.closest('figure').classList.add('empty')"><figcaption>Фото скоро</figcaption></figure>
       <figure><img src="photo/3.jpg" alt="Работа мастера" loading="lazy"
-        onerror="this.closest('figure').remove()"></figure>
+        onerror="this.style.display='none';this.closest('figure').classList.add('empty')"><figcaption>Фото скоро</figcaption></figure>
       <figure><img src="photo/4.jpg" alt="Работа мастера" loading="lazy"
-        onerror="this.closest('figure').remove()"></figure>
+        onerror="this.style.display='none';this.closest('figure').classList.add('empty')"><figcaption>Фото скоро</figcaption></figure>
       <figure><img src="photo/5.jpg" alt="Работа мастера" loading="lazy"
-        onerror="this.closest('figure').remove()"></figure>
+        onerror="this.style.display='none';this.closest('figure').classList.add('empty')"><figcaption>Фото скоро</figcaption></figure>
       <figure><img src="photo/6.jpg" alt="Работа мастера" loading="lazy"
-        onerror="this.closest('figure').remove()"></figure>
+        onerror="this.style.display='none';this.closest('figure').classList.add('empty')"><figcaption>Фото скоро</figcaption></figure>
       <figure><img src="photo/7.jpg" alt="Работа мастера" loading="lazy"
-        onerror="this.closest('figure').remove()"></figure>
+        onerror="this.style.display='none';this.closest('figure').classList.add('empty')"><figcaption>Фото скоро</figcaption></figure>
       <figure><img src="photo/8.jpg" alt="Работа мастера" loading="lazy"
-        onerror="this.closest('figure').remove()"></figure>
+        onerror="this.style.display='none';this.closest('figure').classList.add('empty')"><figcaption>Фото скоро</figcaption></figure>
     </div>
   </div>
 </section>

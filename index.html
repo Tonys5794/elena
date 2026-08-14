@@ -28,7 +28,7 @@
 <style>
 :root{
   /* графит и шампань: фон нейтральный, чтобы не спорить с цветными работами.
-     ПРИ ПРОДАЖЕ: если у неё есть логотип — акцент берём с него */
+     если появится логотип — акцент берём с него */
   --bg:#faf8f6; --bg2:#ffffff; --ink:#2e2a2b; --muted:#857d7e;
   --wine:#2e2a2b; --wine-d:#1b1819; --wine-soft:#f1edeb;
   --gold:#c9a227; --gold-d:#a8851b;
@@ -50,9 +50,6 @@ h1 em,h2 em{font-style:italic;color:var(--gold)}
 section{padding:clamp(56px,6.2vw,112px) 0}
 section,footer{scroll-margin-top:78px}
 
-/* ПРИ ПРОДАЖЕ: удалить блок .demo в разметке */
-.demo{background:#1b1819;color:#efe9e6;text-align:center;font-size:13px;padding:9px 16px;line-height:1.45;font-weight:300}
-.demo b{color:#fff;font-weight:600}
 
 /* ---------- шапка ---------- */
 header{position:sticky;top:0;z-index:80;background:rgba(250,246,243,.9);
@@ -347,6 +344,20 @@ footer a{color:#fff}
     "addressCountry": "RU"
   },
   "areaServed": "Иркутск",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:30",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "00:00"
+    }
+  ],
   "sameAs": [
     "https://vk.com/club232800525",
     "https://2gis.ru/irkutsk/firm/70000001104909063"
@@ -371,8 +382,6 @@ footer a{color:#fff}
 </head>
 <body>
 
-<!-- ПРИ ПРОДАЖЕ: удалить эту строку -->
-<div class="demo">Демонстрационный пример &middot; собран по открытым данным 2ГИС, чтобы показать, как мог бы выглядеть сайт студии. <b>Не является официальным сайтом.</b></div>
 
 <header>
   <div class="wrap">
@@ -705,13 +714,13 @@ footer a{color:#fff}
       </div>
       <div>
         <h4>Режим работы</h4>
-        <p>Приём по предварительной записи</p>
-        <p style="opacity:.7;font-size:14px">Оплата наличными или переводом с карты</p>
+        <p>Пн&ndash;Пт&nbsp;&mdash; 08:30&ndash;18:00<br>Сб, Вс&nbsp;&mdash; выходной</p>
+        <p style="opacity:.7;font-size:14px">Приём по предварительной записи.<br>Оплата наличными или переводом с карты</p>
         <a class="btn btn-gold" style="margin-top:12px" href="https://vk.com/service-booking-232800525" target="_blank" rel="noopener">Записаться онлайн</a>
       </div>
     </div>
     <div class="legal">
-      <p><!-- СЮДА, когда придёт: Услуги оказывает <b>самозанятая Фамилия Имя Отчество, ИНН 000000000000</b>. -->
+      <p>Услуги оказывает <b>самозанятая Лобова Елена Александровна, ИНН 381296276020</b>.
          Адрес оказания услуг: г. Иркутск, 5-й Советский переулок, 1а.
          Телефон: <a href="tel:+79247072551">+7 924 707-25-51</a>.</p>
       <p>Цены на сайте информационные и не являются публичной офертой (ст. 437 ГК РФ).
@@ -724,7 +733,6 @@ footer a{color:#fff}
 
     <div class="copy">
       <span>Студия Елены &middot; депиляция, маникюр, педикюр, обучение &middot; Иркутск</span>
-      <span>Демонстрационный пример</span>
     </div>
   </div>
 </footer>
